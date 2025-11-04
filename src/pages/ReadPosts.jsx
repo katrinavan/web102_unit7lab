@@ -6,6 +6,15 @@ const ReadPosts = (props) => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
+        const fetchPost = async () => {
+            const {data} = await supabase
+                .from('Posts')
+                .select()
+                .order('created_at', { ascending: true })
+
+                // set state of posts
+                setPosts(data)
+        }
         setPosts(props.data)
     }, [props])
     
