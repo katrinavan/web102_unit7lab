@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import './CreatePost.css'
 import { supabase } from '../client'
-
 const CreatePost = () => {
-
     const [post, setPost] = useState({title: "", author: "", description: ""})
     const createPost = async (event) => {
         event.preventDefault()
@@ -12,7 +10,7 @@ const CreatePost = () => {
             .insert({title: post.title, author: post.author, description: post.description})
             .select()
 
-        window.location = "/"
+        window.location = "/"   
     }
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -23,7 +21,6 @@ const CreatePost = () => {
             }
         })
     }
-
     return (
         <div>
             <form>
@@ -44,5 +41,4 @@ const CreatePost = () => {
         </div>
     )
 }
-
 export default CreatePost
